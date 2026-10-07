@@ -83,7 +83,7 @@ export function groupEstimate(g, model, settings, factor = 1) {
   const price = priceTokens(tokens, rates, tokens.peak);
   const dailyScale = settings.mode === 'task' ? g.sessions : 1;
   const periods = { task: settings.mode === 'task' ? 1 : 0, day: dailyScale, week: dailyScale * settings.week, month: dailyScale * settings.days };
-  return { ...price, tokens, rates, periods, perPerson: Object.fromEntries(Object.entries(periods).map(([key, f]) => [key, price.total * f])),
+  return { ...price, tokens, rates: price.rates, periods, perPerson: Object.fromEntries(Object.entries(periods).map(([key, f]) => [key, price.total * f])),
     team: Object.fromEntries(Object.entries(periods).map(([key, f]) => [key, price.total * f * g.people])) };
 }
 export function estimate(state, models) {

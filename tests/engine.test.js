@@ -43,6 +43,9 @@ test('long-context boundary uses the published threshold and full-task premium',
   const tokens = { input: 1e6, read: 0, write: 0, output: 1e6 };
   close(priceTokens(tokens, m, 272000).total, 12);
   close(priceTokens(tokens, m, 272001).total, 19);
+  const result = estimate({ ...DEFAULTS, mode: 'measured', groups: [{ ...group(), measuredPeak: 300000 }] }, [m]);
+  assert.equal(result.scenarios[1].groups[0].rates.input, 4);
+  assert.equal(result.scenarios[1].groups[0].rates.output, 15);
 });
 test('context cap and retries are applied without dropping tokens', () => {
   const t = workload({ ...group(), calls: 3, cap: 1500, retry: 10 }, 'task');
