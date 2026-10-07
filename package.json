@@ -1,0 +1,11 @@
+{
+  "name": "llm-cost-explorer",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "python3 -m http.server 4173 --directory site",
+    "test": "node --test tests/*.test.js && python3 -m unittest discover -s tests -p 'test_*.py'",
+    "prices": "python3 scripts/update_prices.py"
+  }
+}
