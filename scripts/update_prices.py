@@ -5,6 +5,7 @@ Sources are refreshed independently; a failed source retains its last good rows
 and original checkedAt timestamp. Unknown units and ambiguous meters fail closed.
 """
 import concurrent.futures
+import copy
 import datetime as dt
 import hashlib
 import json
@@ -90,7 +91,7 @@ def parse_aws(data, region, url):
                     continue
                 text = ' '.join([a.get('usagetype', ''), a.get('inferenceType', ''), a.get('feature', ''), dim.get('description', ''), a.get('service_tier', '')]).lower()
                 compact = re.sub(r'[^a-z0-9]', '', text)
-                if any(word in compact for word in ['batch', 'priority', 'flex', 'reserved', 'provisioned', 'latency', '1hour', '1hcache', 'tokens1h', 'write1h', 'training', 'image', 'video', 'audio', 'embedding']):
+                if any(word in compact for word in ['batch', 'priority', 'flex', 'ultrafast', 'reserved', 'provisioned', 'latency', '1hour', '1hcache', 'tokens1h', 'write1h', 'training', 'image', 'video', 'audio', 'embedding']):
                     continue
                 if 'cacheread' in compact:
                     kind = 'read'
@@ -103,18 +104,137 @@ def parse_aws(data, region, url):
                 else:
                     continue
                 deployment = 'Global' if 'global' in text else 'Regional / geo'
-                if 'longcontext' in compact or '200ktokens' in compact or 'above200k' in compact:
+                if '200ktokens' in compact or 'above200k' in compact:
                     # Tiered legacy meters need a dedicated adapter; never blend.
                     continue
+                long_context = 'longctx' in compact or 'longcontext' in compact
+                if long_context:
+                    deployment += ' · Long context'
                 key = (name, deployment)
                 row = groups.setdefault(key, record('AWS GovCloud' if region.startswith('us-gov') else 'AWS Bedrock', region, name, deployment, url))
+                if long_context:
+                    row['band'] = 'Long context'
                 price = float(dim['pricePerUnit']['USD']) * factor
                 put_meter(row, kind, price, {'sku': sku, 'description': dim['description'], 'unit': dim['unit'], 'effectiveDate': term.get('effectiveDate')})
+    for (name, deployment), row in groups.items():
+        if row.get('band') == 'Long context':
+            short = groups.get((name, deployment.replace(' · Long context', '')))
+            if short:
+                short['band'] = 'Short context'
     return finish([r for r in groups.values() if not r.pop('_conflict', False)])
 
 def aws(service, region):
     url = f'{AWS_BASE}/offers/v1.0/aws/{service}/current/{region}/index.json'
     return parse_aws(fetch(url), region, url)
+
+AWS_MODEL_CARDS = {
+    'gpt-5.4': '54', 'gpt-5.5': '55', 'gpt-5.6-sol': '56-sol',
+    'gpt-5.6-terra': '56-terra', 'gpt-5.6-luna': '56-luna', 'gpt-6-astra': '6-astra',
+}
+AWS_REGIONS = ['us-east-1', 'us-west-2', 'us-gov-east-1', 'us-gov-west-1']
+
+def parse_aws_model_card(markdown, model, url):
+    """Read scoped Standard tables and availability from AWS's official cards.
+
+    Never infer a government offering from a commercial table. The bulk API
+    omits some available models and can disagree with the model-card rates.
+    """
+    section = markdown.split('## Pricing\n', 1)[1].split('\n## ', 1)[0]
+    availability = markdown.split('## Regional Availability\n', 1)[1].split('\n## ', 1)[0]
+    supported = {r: [False, False, False] for r in AWS_REGIONS}
+    for line in availability.splitlines():
+        if not line.strip().startswith('|'):
+            continue
+        cells = [c.strip() for c in line.strip().strip('|').split('|')]
+        for region in AWS_REGIONS:
+            if len(cells) == 4 and re.match(r'`?' + re.escape(region) + r'\b', cells[0]):
+                supported[region] = [old or 'icon-yes.png' in cell for old, cell in zip(supported[region], cells[1:])]
+    tables, regions, band, threshold, skip = {}, [], None, None, False
+    for line in section.splitlines():
+        lower = line.lower()
+        if line.startswith('### '):
+            skip = any(tier in lower for tier in ['ultrafast', 'priority', 'flex', 'batch'])
+            if 'commercial' in lower:
+                regions = ['us-east-1', 'us-west-2']
+            elif 'aws govcloud' in lower:
+                regions = [r for r, marker in [('us-gov-east-1', 'us-east'), ('us-gov-west-1', 'us-west')] if marker in lower]
+            else:
+                raise ValueError('Unrecognized AWS model-card pricing scope: ' + line)
+            band = None
+        if line.startswith('###'):
+            if 'short context' in lower:
+                band = 'short'
+            elif 'long context' in lower:
+                band = 'long'
+            match = re.search(r'(\d+)k input tokens', lower)
+            if match:
+                threshold = int(match[1]) * 1000
+        if skip or not line.strip().startswith('|'):
+            continue
+        cells = [c.strip() for c in line.strip().strip('|').split('|')]
+        if len(cells) != 5 or cells[0] not in ['In-Region', 'Geo CRIS', 'Global CRIS']:
+            continue
+        if not regions or band is None or threshold is None:
+            raise ValueError('AWS model-card table missing scope or context threshold')
+        if dollars(cells[1]) is None or dollars(cells[4]) is None:
+            raise ValueError('AWS model-card input/output pricing missing')
+        column = ['In-Region', 'Geo CRIS', 'Global CRIS'].index(cells[0])
+        deployment = 'Global' if column == 2 else 'Regional / geo'
+        for region in regions:
+            if not supported[region][column]:
+                continue
+            key = (region, deployment, band)
+            row = tables.setdefault(key, record('AWS GovCloud' if region.startswith('us-gov') else 'AWS Bedrock', region, 'openai.' + model, deployment, url))
+            row['contextThreshold'] = threshold
+            for kind, cell in zip(['input', 'write', 'read', 'output'], cells[1:]):
+                amount = dollars(cell)
+                if amount is not None:
+                    put_meter(row, kind, amount, {'description': f'{model} · {region} · {cells[0]} · {band} context', 'unit': '1M tokens', 'source': url})
+            if row['write'] is not None:
+                row['cacheWriteTtlMinutes'] = 30
+    rows = []
+    for (region, deployment, band), row in tables.items():
+        if band != 'short':
+            continue
+        if row.pop('_conflict', False):
+            raise ValueError('Conflicting AWS model-card rates for the same offering')
+        long = tables.get((region, deployment, 'long'))
+        if long:
+            if long.pop('_conflict', False) or not valid(long['input']) or not valid(long['output']):
+                raise ValueError('Incomplete/conflicting AWS model-card long-context table')
+            row['longContext'] = {'threshold': row['contextThreshold'], **{k: long[k] for k in ['input', 'output', 'read', 'write']}, 'meters': long['meters']}
+        else:
+            row['unpricedAbove'] = row['contextThreshold']
+        rows.append(row)
+    return finish(rows)
+
+def aws_model_card(model, suffix):
+    url = f'https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-{suffix}.html'
+    return parse_aws_model_card(fetch(url.replace('.html', '.md'), False), model, url)
+
+def reconcile_aws_cards(rows):
+    """Prefer model-card rates explicitly; retain bulk discrepancies as evidence."""
+    def key(row):
+        name = re.sub(r'[^a-z0-9]', '', row['name'].lower()).removeprefix('openai')
+        return row['provider'], row['region'], name, row['deployment'].replace(' · Long context', '')
+    cards = {key(r): r for r in rows if r.get('sourceKey', '').startswith('aws-model-card:')}
+    result = []
+    for row in rows:
+        card = cards.get(key(row))
+        if not card or row.get('sourceKey', '').startswith('aws-model-card:'):
+            result.append(row)
+            continue
+        # Only combine tables if the documentation actually supplies the band.
+        is_long = row.get('band') == 'Long context'
+        expected = card.get('longContext') if is_long else card
+        if expected is None:
+            result.append(row)
+            continue
+        if not is_long:
+            card['id'] = row['id']  # Preserve previously shared scenario identities.
+        if any(row.get(k) != expected.get(k) for k in ['input', 'output', 'read', 'write']):
+            card.setdefault('priceDiscrepancies', []).append({'source': row['source'], 'checkedAt': row['checkedAt'], 'band': 'long' if is_long else 'short', 'rates': {k: row[k] for k in ['input', 'output', 'read', 'write']}})
+    return result
 
 def parse_azure(items, region, url):
     groups = {}
@@ -259,7 +379,10 @@ def refresh(previous, jobs):
                 row['sourceKey'] = key
             return result, dict(key=key, name=name, url=url, status='ok', checkedAt=NOW, count=len(result))
         except Exception as exc:
-            retained = [r for r in previous.get('models', []) if r.get('sourceKey') == key]
+            # Reconciliation hides duplicate bulk rows from the picker. Keep
+            # their original snapshots so an outage cannot erase comparisons.
+            snapshot = previous.get('awsBulkSnapshots', previous.get('models', [])) if key.startswith('AmazonBedrock') else previous.get('models', [])
+            retained = copy.deepcopy([r for r in snapshot if r.get('sourceKey') == key])
             old_time = min((r['checkedAt'] for r in retained), default=None)
             return retained, dict(key=key, name=name, url=url, status='stale' if retained else 'unavailable', checkedAt=old_time, attemptedAt=NOW, count=len(retained), error=str(exc)[:200])
     with concurrent.futures.ThreadPoolExecutor(max_workers=6) as pool:
@@ -267,6 +390,12 @@ def refresh(previous, jobs):
             rows.extend(result)
             statuses.append(status)
             print(f"{status['name']}: {status['status']} ({status['count']} offerings)", flush=True)
+    # A retained card can contain last run's comparison. Recompute with the
+    # source snapshots available in this refresh, without stale duplicate notes.
+    for row in rows:
+        row.pop('priceDiscrepancies', None)
+    aws_bulk = copy.deepcopy([r for r in rows if r.get('sourceKey', '').startswith('AmazonBedrock')])
+    rows = reconcile_aws_cards(rows)
     # AWS services can overlap; keep separate identities only when prices agree.
     unique = {}
     for row in rows:
@@ -276,7 +405,7 @@ def refresh(previous, jobs):
                 row['id'] += '-' + hashlib.sha256(row['sourceKey'].encode()).hexdigest()[:6]
                 row['deployment'] += ' · ' + row['sourceKey'].split(':')[0]
         unique[row['id']] = row
-    return {'version': 1, 'generatedAt': NOW, 'currency': 'USD', 'sources': statuses, 'models': sorted(unique.values(), key=lambda r: (r['provider'], r['region'], r['name'], r['deployment']))}
+    return {'version': 1, 'generatedAt': NOW, 'currency': 'USD', 'sources': statuses, 'awsBulkSnapshots': aws_bulk, 'models': sorted(unique.values(), key=lambda r: (r['provider'], r['region'], r['name'], r['deployment']))}
 
 def main():
     previous = json.loads(OUTPUT.read_text()) if OUTPUT.exists() else {}
@@ -285,6 +414,9 @@ def main():
         for region in ['us-gov-west-1', 'us-gov-east-1', 'us-east-1', 'us-west-2']:
             url = f'{AWS_BASE}/offers/v1.0/aws/{service}/current/{region}/index.json'
             jobs.append((service + ':' + region, service + ' · ' + region, url, lambda s=service, r=region: aws(s, r)))
+    for model, suffix in AWS_MODEL_CARDS.items():
+        url = f'https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-openai-gpt-{suffix}.html'
+        jobs.append(('aws-model-card:' + model, 'AWS model card · ' + model, url, lambda m=model, s=suffix: aws_model_card(m, s)))
     for region in ['usgovvirginia', 'usgovarizona', 'eastus', 'westus']:
         jobs.append(('azure:' + region, 'Azure · ' + region, 'https://prices.azure.com/api/retail/prices', lambda r=region: azure(r)))
     for provider in ['OpenAI', 'Anthropic']:

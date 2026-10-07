@@ -53,6 +53,12 @@ test('context cap and retries are applied without dropping tokens', () => {
   close(t.output, 495);
   assert.equal(t.capped, true);
 });
+test('a missing published long-context price cannot silently use a short rate', () => {
+  const m = { ...model, unpricedAbove: 272000 };
+  const tokens = { input: 1e6, read: 0, write: 0, output: 0 };
+  close(priceTokens(tokens, m, 272000).total, 2);
+  assert.throws(() => priceTokens(tokens, m, 272001), /no published price/);
+});
 test('scenario calls generate an ordered sensitivity range', () => {
   const r = estimate({ ...DEFAULTS, groups: [group()] }, [model]);
   assert.ok(r.scenarios[0].total.month < r.scenarios[1].total.month);

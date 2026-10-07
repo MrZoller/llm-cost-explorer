@@ -30,6 +30,7 @@ export function validateGroup(g, mode = 'daily') {
   if (mode !== 'measured' && g.context > g.cap) throw new Error('The context cap must be at least the starting context.');
 }
 export function priceTokens(tokens, model, peak = 0) {
+  if (model.unpricedAbove && peak > model.unpricedAbove) throw new Error(`This offering has no published price above ${model.unpricedAbove.toLocaleString()} input tokens. Reduce context, choose another offering, or enter verified custom rates.`);
   let rates = model;
   let longContext = false;
   if (model.longContext && peak > model.longContext.threshold) { rates = { ...model, ...model.longContext }; longContext = true; }

@@ -1,0 +1,1693 @@
+{
+  "sourceUrl": "https://pricing.us-east-1.amazonaws.com/offers/v1.0/aws/AmazonBedrock/current/us-gov-west-1/index.json",
+  "capturedAt": "2026-10-07",
+  "products": {
+    "HVF3QATQPB8QY5A4": {
+      "sku": "HVF3QATQPB8QY5A4",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-input-tokens-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input_tokens_mantle"
+      }
+    },
+    "WTCY3H79NJ4FKWKY": {
+      "sku": "WTCY3H79NJ4FKWKY",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-read-tokens-long-ctx"
+      }
+    },
+    "25W7XV4U7BWMDBB2": {
+      "sku": "25W7XV4U7BWMDBB2",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-input-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input_tokens_mantle"
+      }
+    },
+    "SCQEPG2WQDCJ7WHE": {
+      "sku": "SCQEPG2WQDCJ7WHE",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-output-tokens-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output-tokens-long-ctx"
+      }
+    },
+    "QT3FUQSB2XW29ABM": {
+      "sku": "QT3FUQSB2XW29ABM",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "Cache Read Input Tokens"
+      }
+    },
+    "SRZACGG5ZSTY3AWH": {
+      "sku": "SRZACGG5ZSTY3AWH",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-read-tokens-long-ctx"
+      }
+    },
+    "Z53AT5EDHYWBM9YC": {
+      "sku": "Z53AT5EDHYWBM9YC",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m"
+      }
+    },
+    "AJZX4S4XEXZB5UN8": {
+      "sku": "AJZX4S4XEXZB5UN8",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-output-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output_tokens_mantle"
+      }
+    },
+    "75363N64SDYJWYP3": {
+      "sku": "75363N64SDYJWYP3",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-output-tokens-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output-tokens-long-ctx"
+      }
+    },
+    "ZH9V4Y8RZCRP8PQ7": {
+      "sku": "ZH9V4Y8RZCRP8PQ7",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.4-mantle-output-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.4",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output_tokens_mantle"
+      }
+    },
+    "AARGDMTKDVAWYHEN": {
+      "sku": "AARGDMTKDVAWYHEN",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-input-tokens-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input-tokens-long-ctx"
+      }
+    },
+    "PJV6TTHQQRCYF8Q5": {
+      "sku": "PJV6TTHQQRCYF8Q5",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-input-tokens-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input_tokens_mantle"
+      }
+    },
+    "E5VV3ACUZVYNTRCM": {
+      "sku": "E5VV3ACUZVYNTRCM",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-input-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input_tokens_mantle"
+      }
+    },
+    "8UGSMGT8P9G882BS": {
+      "sku": "8UGSMGT8P9G882BS",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-input-tokens-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input_tokens_mantle"
+      }
+    },
+    "BTGXD8JHYYK4D3Q2": {
+      "sku": "BTGXD8JHYYK4D3Q2",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-read-tokens-long-ctx"
+      }
+    },
+    "YMBJR26WUSJ9VC95": {
+      "sku": "YMBJR26WUSJ9VC95",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m-long-ctx"
+      }
+    },
+    "VZMCKGYYEZJ2UE45": {
+      "sku": "VZMCKGYYEZJ2UE45",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-output-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output_tokens_mantle"
+      }
+    },
+    "7YQB4NTECGRJVJJ4": {
+      "sku": "7YQB4NTECGRJVJJ4",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-input-tokens-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input-tokens-long-ctx"
+      }
+    },
+    "N9KFPDZ7W2ARHJZQ": {
+      "sku": "N9KFPDZ7W2ARHJZQ",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-read-tokens-long-ctx"
+      }
+    },
+    "3NSC9VAX8EE7RK4F": {
+      "sku": "3NSC9VAX8EE7RK4F",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m"
+      }
+    },
+    "AXK394FZD2JN9N2N": {
+      "sku": "AXK394FZD2JN9N2N",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-output-tokens-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output_tokens_mantle"
+      }
+    },
+    "RM8D3U997HW5YTHT": {
+      "sku": "RM8D3U997HW5YTHT",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m-long-ctx"
+      }
+    },
+    "MR45W8FFUDRKE789": {
+      "sku": "MR45W8FFUDRKE789",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-output-tokens-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output_tokens_mantle"
+      }
+    },
+    "MMB6FH9F7V5CN9EU": {
+      "sku": "MMB6FH9F7V5CN9EU",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-output-tokens-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output-tokens-long-ctx"
+      }
+    },
+    "TXYZYUXUNUB8BGQD": {
+      "sku": "TXYZYUXUNUB8BGQD",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "Cache Read Input Tokens"
+      }
+    },
+    "3CQXSMXA8VJ282TN": {
+      "sku": "3CQXSMXA8VJ282TN",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-input-tokens-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input-tokens-long-ctx"
+      }
+    },
+    "BMZQHP7H9H34248J": {
+      "sku": "BMZQHP7H9H34248J",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-output-tokens-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output_tokens_mantle"
+      }
+    },
+    "2JB5D75CGY98XDBF": {
+      "sku": "2JB5D75CGY98XDBF",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-input-tokens-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input-tokens-long-ctx"
+      }
+    },
+    "M5YP3K5MC5QFHWJS": {
+      "sku": "M5YP3K5MC5QFHWJS",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m-long-ctx"
+      }
+    },
+    "4H6BX554DPHABYKY": {
+      "sku": "4H6BX554DPHABYKY",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-input-tokens-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input-tokens-long-ctx"
+      }
+    },
+    "92G4N3P8UTH55XMW": {
+      "sku": "92G4N3P8UTH55XMW",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-input-tokens-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input-tokens-long-ctx"
+      }
+    },
+    "SSEDMRUFZD97G9ZG": {
+      "sku": "SSEDMRUFZD97G9ZG",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-output-tokens-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output-tokens-long-ctx"
+      }
+    },
+    "NYJ7XAYVBPTMN6XK": {
+      "sku": "NYJ7XAYVBPTMN6XK",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "Cache Read Input Tokens"
+      }
+    },
+    "49RVEPEM3C8GFUHV": {
+      "sku": "49RVEPEM3C8GFUHV",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-long-ctx-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m-long-ctx"
+      }
+    },
+    "4PFJR3M4CENN75R8": {
+      "sku": "4PFJR3M4CENN75R8",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m"
+      }
+    },
+    "W2YGCZ66ZX8RG9BT": {
+      "sku": "W2YGCZ66ZX8RG9BT",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "Cache Read Input Tokens"
+      }
+    },
+    "KZV893Z33X5GAVKJ": {
+      "sku": "KZV893Z33X5GAVKJ",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-read-tokens-long-ctx"
+      }
+    },
+    "UHF9ZV7JRDWW7CPM": {
+      "sku": "UHF9ZV7JRDWW7CPM",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-read-tokens-long-ctx"
+      }
+    },
+    "Y5M8XECNRGNCHRQ5": {
+      "sku": "Y5M8XECNRGNCHRQ5",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m"
+      }
+    },
+    "NQJQH9K23CJAZCXD": {
+      "sku": "NQJQH9K23CJAZCXD",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m"
+      }
+    },
+    "GARFG5D4HVPDFJX7": {
+      "sku": "GARFG5D4HVPDFJX7",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.4-mantle-input-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.4",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input_tokens_mantle"
+      }
+    },
+    "N5XXS5MBWNT5JR8N": {
+      "sku": "N5XXS5MBWNT5JR8N",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m"
+      }
+    },
+    "V3944G2UPC5HCQDH": {
+      "sku": "V3944G2UPC5HCQDH",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.4-mantle-cache-read-tokens-standard",
+        "operation": "",
+        "model": "openai.gpt-5.4",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "Cache Read Input Tokens"
+      }
+    },
+    "NZU25UCEZ4HQ7P9Y": {
+      "sku": "NZU25UCEZ4HQ7P9Y",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m-long-ctx"
+      }
+    },
+    "8Z6J639699XPNF2A": {
+      "sku": "8Z6J639699XPNF2A",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-output-tokens-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output-tokens-long-ctx"
+      }
+    },
+    "UMPW8RX7RW764ZSZ": {
+      "sku": "UMPW8RX7RW764ZSZ",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "cache-write-tokens-30m-long-ctx"
+      }
+    },
+    "HRGZ8P5EE4EPEXHE": {
+      "sku": "HRGZ8P5EE4EPEXHE",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "Cache Read Input Tokens"
+      }
+    },
+    "8ESY8C25E5PT4WG9": {
+      "sku": "8ESY8C25E5PT4WG9",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-luna-mantle-output-tokens-flex",
+        "operation": "",
+        "model": "openai.gpt-5.6-luna",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "flex",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output_tokens_mantle"
+      }
+    },
+    "GGZWPJX96T6DYSAB": {
+      "sku": "GGZWPJX96T6DYSAB",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-input-tokens-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "input_tokens_mantle"
+      }
+    },
+    "2A73PDVYBC3DKW4Q": {
+      "sku": "2A73PDVYBC3DKW4Q",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-output-tokens-long-ctx-standard",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "standard",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "output-tokens-long-ctx"
+      }
+    },
+    "C3TQ2USRW49752YD": {
+      "sku": "C3TQ2USRW49752YD",
+      "attributes": {
+        "servicecode": "AmazonBedrock",
+        "location": "AWS GovCloud (US-West)",
+        "locationType": "AWS Region",
+        "usagetype": "UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-priority",
+        "operation": "",
+        "model": "openai.gpt-5.6-terra",
+        "regionCode": "us-gov-west-1",
+        "service_tier": "priority",
+        "servicename": "Amazon Bedrock",
+        "tokenType": "Cache Read Input Tokens"
+      }
+    }
+  },
+  "terms": {
+    "OnDemand": {
+      "HVF3QATQPB8QY5A4": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "HVF3QATQPB8QY5A4.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 1.32 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-input-tokens-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "1.3200000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "WTCY3H79NJ4FKWKY": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "WTCY3H79NJ4FKWKY.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.1056 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.1056000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "25W7XV4U7BWMDBB2": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "25W7XV4U7BWMDBB2.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 2.64 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-input-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "2.6400000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "SCQEPG2WQDCJ7WHE": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "SCQEPG2WQDCJ7WHE.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 4.752 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-output-tokens-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "4.7520000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "QT3FUQSB2XW29ABM": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "QT3FUQSB2XW29ABM.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.264 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.2640000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "SRZACGG5ZSTY3AWH": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "SRZACGG5ZSTY3AWH.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.264 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.2640000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "Z53AT5EDHYWBM9YC": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "Z53AT5EDHYWBM9YC.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 3.30 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "3.3000000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "AJZX4S4XEXZB5UN8": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "AJZX4S4XEXZB5UN8.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 15.84 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-output-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "15.8400000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "75363N64SDYJWYP3": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "75363N64SDYJWYP3.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 1.188 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-output-tokens-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "1.1880000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "ZH9V4Y8RZCRP8PQ7": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "ZH9V4Y8RZCRP8PQ7.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 19.80 per 1M tokens for UGW1-openai.gpt-5.4-mantle-output-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "19.8000000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "AARGDMTKDVAWYHEN": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "AARGDMTKDVAWYHEN.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 2.64 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-input-tokens-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "2.6400000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "PJV6TTHQQRCYF8Q5": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "PJV6TTHQQRCYF8Q5.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.528 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-input-tokens-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.5280000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "E5VV3ACUZVYNTRCM": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "E5VV3ACUZVYNTRCM.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.264 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-input-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.2640000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "8UGSMGT8P9G882BS": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "8UGSMGT8P9G882BS.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.132 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-input-tokens-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.1320000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "BTGXD8JHYYK4D3Q2": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "BTGXD8JHYYK4D3Q2.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 1.056 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "1.0560000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "YMBJR26WUSJ9VC95": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "YMBJR26WUSJ9VC95.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 3.30 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "3.3000000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "VZMCKGYYEZJ2UE45": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "VZMCKGYYEZJ2UE45.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 1.584 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-output-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "1.5840000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "7YQB4NTECGRJVJJ4": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "7YQB4NTECGRJVJJ4.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 10.56 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-input-tokens-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "10.5600000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "N9KFPDZ7W2ARHJZQ": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "N9KFPDZ7W2ARHJZQ.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.528 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.5280000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "3NSC9VAX8EE7RK4F": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "3NSC9VAX8EE7RK4F.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 1.65 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "1.6500000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "AXK394FZD2JN9N2N": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "AXK394FZD2JN9N2N.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 3.168 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-output-tokens-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "3.1680000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "RM8D3U997HW5YTHT": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "RM8D3U997HW5YTHT.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.66 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.6600000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "MR45W8FFUDRKE789": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "MR45W8FFUDRKE789.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 7.92 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-output-tokens-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "7.9200000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "MMB6FH9F7V5CN9EU": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "MMB6FH9F7V5CN9EU.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 11.88 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-output-tokens-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "11.8800000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "TXYZYUXUNUB8BGQD": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "TXYZYUXUNUB8BGQD.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.0132 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.0132000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "3CQXSMXA8VJ282TN": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "3CQXSMXA8VJ282TN.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.264 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-input-tokens-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.2640000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "BMZQHP7H9H34248J": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "BMZQHP7H9H34248J.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 31.68 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-output-tokens-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "31.6800000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "2JB5D75CGY98XDBF": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "2JB5D75CGY98XDBF.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.528 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-input-tokens-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.5280000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "M5YP3K5MC5QFHWJS": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "M5YP3K5MC5QFHWJS.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 1.32 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "1.3200000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "4H6BX554DPHABYKY": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "4H6BX554DPHABYKY.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 1.056 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-input-tokens-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "1.0560000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "92G4N3P8UTH55XMW": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "92G4N3P8UTH55XMW.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 5.28 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-input-tokens-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "5.2800000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "SSEDMRUFZD97G9ZG": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "SSEDMRUFZD97G9ZG.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 47.52 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-output-tokens-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "47.5200000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "NYJ7XAYVBPTMN6XK": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "NYJ7XAYVBPTMN6XK.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.0528 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.0528000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "49RVEPEM3C8GFUHV": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "49RVEPEM3C8GFUHV.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 13.20 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-long-ctx-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "13.2000000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "4PFJR3M4CENN75R8": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "4PFJR3M4CENN75R8.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.66 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.6600000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "W2YGCZ66ZX8RG9BT": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "W2YGCZ66ZX8RG9BT.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.0264 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.0264000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "KZV893Z33X5GAVKJ": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "KZV893Z33X5GAVKJ.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.0528 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.0528000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "UHF9ZV7JRDWW7CPM": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "UHF9ZV7JRDWW7CPM.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.0264 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-read-tokens-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.0264000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "Y5M8XECNRGNCHRQ5": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "Y5M8XECNRGNCHRQ5.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.33 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.3300000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "NQJQH9K23CJAZCXD": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "NQJQH9K23CJAZCXD.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.165 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.1650000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "GARFG5D4HVPDFJX7": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "GARFG5D4HVPDFJX7.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 3.30 per 1M tokens for UGW1-openai.gpt-5.4-mantle-input-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "3.3000000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "N5XXS5MBWNT5JR8N": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "N5XXS5MBWNT5JR8N.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 6.60 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "6.6000000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "V3944G2UPC5HCQDH": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "V3944G2UPC5HCQDH.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.33 per 1M tokens for UGW1-openai.gpt-5.4-mantle-cache-read-tokens-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.3300000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "NZU25UCEZ4HQ7P9Y": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "NZU25UCEZ4HQ7P9Y.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.33 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-cache-write-tokens-30m-long-ctx-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.3300000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "8Z6J639699XPNF2A": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "8Z6J639699XPNF2A.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 2.376 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-output-tokens-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "2.3760000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "UMPW8RX7RW764ZSZ": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "UMPW8RX7RW764ZSZ.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 6.60 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-write-tokens-30m-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "6.6000000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "HRGZ8P5EE4EPEXHE": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "HRGZ8P5EE4EPEXHE.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.132 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.1320000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "8ESY8C25E5PT4WG9": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "8ESY8C25E5PT4WG9.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.792 per 1M tokens for UGW1-openai.gpt-5.6-luna-mantle-output-tokens-flex in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.7920000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "GGZWPJX96T6DYSAB": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "GGZWPJX96T6DYSAB.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 5.28 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-input-tokens-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "5.2800000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "2A73PDVYBC3DKW4Q": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "2A73PDVYBC3DKW4Q.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 23.76 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-output-tokens-long-ctx-standard in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "23.7600000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      },
+      "C3TQ2USRW49752YD": {
+        "term": {
+          "effectiveDate": "2026-10-01T00:00:00Z",
+          "priceDimensions": {
+            "price": {
+              "rateCode": "C3TQ2USRW49752YD.JRTCKXETXF.6YS6EN2CT7",
+              "description": "USD 0.528 per 1M tokens for UGW1-openai.gpt-5.6-terra-mantle-cache-read-tokens-priority in AWS GovCloud (US-West)",
+              "beginRange": "0",
+              "endRange": "Inf",
+              "unit": "1M tokens",
+              "pricePerUnit": {
+                "USD": "0.5280000000"
+              },
+              "appliesTo": []
+            }
+          }
+        }
+      }
+    }
+  }
+}

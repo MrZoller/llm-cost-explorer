@@ -61,18 +61,19 @@ The scheduled GitHub Actions workflow refreshes prices daily at **11:17 UTC** an
 | --- | --- | --- |
 | AWS Price List Bulk API: AmazonBedrock and AmazonBedrockFoundationModels | us-east-1, us-west-2, us-gov-east-1, us-gov-west-1; regional/global variants | Official, exact SKU evidence retained |
 | Azure Retail Prices API | usgovvirginia, usgovarizona, eastus, westus; regional, data-zone, global, and context-band meters | Official, exact meter IDs retained |
+| AWS GPT model documentation | GPT-5.4, GPT-5.5, GPT-5.6 Sol/Terra/Luna, GPT-6 Astra; only explicitly documented regions and standard pricing | Official, supplements gaps in the bulk feed |
 | OpenAI pricing Markdown | Standard text pricing, with published long-context tiers | Official |
 | Anthropic pricing Markdown | Direct standard text pricing, 5-minute cache-write rates | Official |
 | LiteLLM public catalog | Google Gemini, Mistral, DeepSeek, xAI | Secondary; labeled in the interface |
 
 Useful references: [AWS bulk price files](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/using-the-aws-price-list-bulk-api-fetching-price-list-files-manually.html), [Azure Retail Prices API](https://learn.microsoft.com/en-us/rest/api/cost-management/retail-prices/azure-retail-prices), and [LiteLLM source](https://github.com/BerriAI/litellm/blob/main/model_prices_and_context_window.json). The UI and JSON retain source links and per-source check timestamps. Listing a price does not prove model availability or government authorization in an account.
 
-The importer rejects unknown billing units, incomplete price pairs, conflicting meters, and unsupported service tiers. No inference is made from commercial to government prices. Failed sources retain their original last-good timestamps and rows; the UI marks them stale. A successful fetch validates shape and units, not invoice accuracy. Source layouts can change, so check refresh history and compare important budgets with actual billing.
+The importer rejects unknown billing units, incomplete price pairs, conflicting meters, and unsupported service tiers. No inference is made from commercial to government prices. Failed sources retain their original last-good timestamps and rows; the UI marks them stale. A successful fetch validates shape and units, not invoice accuracy. Supported AWS GPT model cards supplement missing bulk-feed offerings. Their explicit region and context-band tables take precedence over bulk-feed rates for the same offering. If those official sources disagree, both sets of rates and their check dates are retained, and the UI displays a warning and comparison. Commercial rates are never used to fill government gaps. Missing documented long-context pricing prevents estimates above the known threshold instead of silently using a short-context rate. Source layouts can change, so check refresh history and compare important budgets with actual billing.
 
 Known limitations:
 
 - Standard text/code token charges only. Excludes subscriptions, built-in tool/search fees, sandboxes, storage/cache storage, retrieval, embeddings, networking, taxes, and provisioned capacity.
-- No batch, flex, priority, reserved, fine-tuning, audio, video, or image pricing. Five-minute cache-write rates are used where a cache TTL distinction exists.
+- No batch, flex, priority, reserved, fine-tuning, audio, video, or image pricing. Five-minute cache-write rates are used for Anthropic; supported AWS GPT model documentation specifies 30-minute writes. The applicable TTL is shown with the rates.
 - Azure imports OpenAI-family products in the listed regions, not the entire Foundry catalog. Other providers/regions and contract rates can be entered manually.
 - Supported long-context rate tiers apply conservatively to a full task (or measured period) when its peak input exceeds the published threshold. Mixed short/long measured usage should be entered as separate groups or calculations for a closer estimate. Azure context bands remain explicit selectable offerings; users must choose the applicable band.
 - Context limits and tier metadata are incomplete in cloud price feeds. A warning prompts verification for large inputs. Direct-provider secondary metadata may also lag.
