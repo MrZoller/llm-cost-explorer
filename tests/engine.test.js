@@ -47,6 +47,13 @@ test('long-context boundary uses the published threshold and full-task premium',
   assert.equal(result.scenarios[1].groups[0].rates.input, 4);
   assert.equal(result.scenarios[1].groups[0].rates.output, 15);
 });
+test('Haiku prompt-length pricing switches all token categories only above 100K', () => {
+  const m = { input: .1, output: .5, read: .01, write: .125,
+    longContext: { threshold: 100000, input: .5, output: 2.5, read: .05, write: .625 } };
+  const tokens = { input: 1e6, read: 1e6, write: 1e6, output: 1e6 };
+  close(priceTokens(tokens, m, 100000).total, .735);
+  close(priceTokens(tokens, m, 100001).total, 3.675);
+});
 test('context cap and retries are applied without dropping tokens', () => {
   const t = workload({ ...group(), calls: 3, cap: 1500, retry: 10 }, 'task');
   close(t.input + t.read + t.write, 4400);

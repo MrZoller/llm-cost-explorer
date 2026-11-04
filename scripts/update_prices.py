@@ -66,6 +66,14 @@ def finish(rows):
         for field in ('input', 'output', 'read', 'write'):
             if r.get(field) is not None and not valid(r[field]):
                 raise ValueError('Invalid price')
+        if 'longContext' in r:
+            tier = r['longContext']
+            if not isinstance(tier.get('threshold'), int) or tier['threshold'] <= 0:
+                raise ValueError('Invalid long-context threshold')
+            if not valid(tier.get('input')) or not valid(tier.get('output')):
+                raise ValueError('Invalid long-context input/output price')
+            if any(tier.get(field) is not None and not valid(tier[field]) for field in ('read', 'write')):
+                raise ValueError('Invalid long-context cache price')
     return complete
 
 def put_meter(row, kind, price, evidence):
@@ -290,43 +298,112 @@ def dollars(cell):
     match = re.search(r'\$([\d,.]+)', cell)
     return float(match[1].replace(',', '')) if match else None
 
-def parse_openai(markdown, url):
-    section = markdown.split('### Standard pricing data', 1)[1].split('### Batch pricing data', 1)[0]
-    if 'Short context input' not in section or 'Long context output' not in section:
-        raise ValueError('OpenAI price table schema changed')
-    rows = []
+def pricing_section(markdown, heading):
+    """Use the first named section, stopping before another peer/parent section."""
+    match = re.search(r'^' + re.escape(heading) + r'\s*$', markdown, re.M)
+    if not match:
+        raise ValueError('Missing pricing section: ' + heading)
+    depth = len(heading.split(' ', 1)[0])
+    return re.split(r'^#{1,' + str(depth) + r'}\s+', markdown[match.end():], maxsplit=1, flags=re.M)[0]
+
+def price_table_rows(section):
+    headers = None
     for line in section.splitlines():
-        if not line.startswith('|'):
+        if not line.strip().startswith('|'):
             continue
-        cells = [c.strip() for c in line.strip('|').split('|')]
-        if len(cells) != 9 or dollars(cells[1]) is None or dollars(cells[4]) is None:
-            continue
-        name = re.sub(r'\s*\(.*\)', '', cells[0])
+        cells = [c.strip() for c in line.strip().strip('|').split('|')]
+        if cells[0].lower() == 'model':
+            headers = [c.lower() for c in cells]
+            if len(set(headers)) != len(headers):
+                raise ValueError('Duplicate pricing column')
+        elif any('$' in cell for cell in cells):
+            if not headers or len(cells) != len(headers):
+                raise ValueError('Price table row does not match its header')
+            yield dict(zip(headers, cells))
+
+def parse_openai(markdown, url):
+    # Later Standard sections are specialized/restricted model families. Do not
+    # sweep their rates (or Batch/Fast/Flex tables) into the flagship section.
+    section = pricing_section(markdown, '### Standard pricing data')
+    rows = []
+    for cells in price_table_rows(section):
+        tiered = 'short context input' in cells
+        prefix = 'short context ' if tiered else ''
+        # Recognize both the legacy cache-write header and explicit TTL columns.
+        write = '30m write' if prefix + '30m write' in cells else 'cache writes'
+        fields = {'input': 'input', 'output': 'output', 'read': 'cached input', 'write': write}
+        expected = {'model', 'input', 'output', 'cached input'}
+        if tiered:
+            suffixes = {'input', 'output', 'cached input', write}
+            if write == '30m write':
+                suffixes.add('12h write')
+            expected = {'model'} | {band + suffix for band in ['short context ', 'long context '] for suffix in suffixes}
+        if set(cells) != expected:
+            raise ValueError('OpenAI price table schema changed')
+        rates = {kind: dollars(cells.get(prefix + label, '')) for kind, label in fields.items()}
+        if not valid(rates['input']) or not valid(rates['output']):
+            raise ValueError('Incomplete or invalid OpenAI input/output pricing')
+        name = re.sub(r'\s*\(.*\)', '', cells['model'])
         row = record('OpenAI', 'Global', name, 'Standard', url)
-        row.update(dict(zip(['input', 'read', 'write', 'output'], map(dollars, cells[1:5]))))
-        if dollars(cells[5]) is not None and dollars(cells[8]) is not None:
+        row.update(rates)
+        if write == '30m write' and row['write'] is not None:
+            row['cacheWriteTtlMinutes'] = 30
+        if tiered:
             if '≤272K input tokens' not in markdown:
                 raise ValueError('OpenAI context threshold changed')
-            row['longContext'] = {'threshold': 272000, **dict(zip(['input', 'read', 'write', 'output'], map(dollars, cells[5:9])))}
+            long_rates = {kind: dollars(cells['long context ' + label]) for kind, label in fields.items()}
+            if long_rates['input'] is not None and long_rates['output'] is not None:
+                row['longContext'] = {'threshold': 272000, **long_rates}
+            elif any(rate is not None for rate in long_rates.values()):
+                raise ValueError('Incomplete OpenAI long-context pricing')
+            else:
+                row['unpricedAbove'] = 272000
         rows.append(row)
     return finish(rows)
 
 def parse_anthropic(markdown, url):
-    section = markdown.split('## Model pricing', 1)[1].split('\n## ', 1)[0]
-    rows = []
-    for line in section.splitlines():
-        if not line.startswith('|'):
+    section = pricing_section(markdown, '## Model pricing')
+    groups = {}
+    fields = {'input': 'base input tokens', 'write': '5m cache writes', 'read': 'cache hits and refreshes', 'output': 'output tokens'}
+    for cells in price_table_rows(section):
+        if set(cells) != {'model', '1h cache writes', *fields.values()}:
+            raise ValueError('Anthropic price table schema changed')
+        label = cells['model'].replace('**', '').strip()
+        if re.search(r'\b(deprecated|retired)\b', label, re.I):
             continue
-        cells = [c.strip() for c in line.strip('|').split('|')]
-        if len(cells) != 6 or dollars(cells[1]) is None or dollars(cells[5]) is None:
-            continue
-        name = re.sub(r'\s*\(.*', '', cells[0]).replace('**', '').strip()
+        rates = {kind: dollars(cells[column]) for kind, column in fields.items()}
+        if not valid(rates['input']) or not valid(rates['output']):
+            raise ValueError('Incomplete or invalid Anthropic input/output pricing')
+        name = re.sub(r'\s*\(.*', '', label).strip()
+        band = re.search(r'\(for prompts (up to|over) ([\d,]+) tokens\)', label, re.I)
+        if not band and re.search(r'\b(prompts|tokens|context)\b', label[len(name):], re.I):
+            raise ValueError('Unrecognized Anthropic context band: ' + label)
+        kind = band[1].lower() if band else 'base'
+        threshold = int(band[2].replace(',', '')) if band else None
+        if threshold is not None and threshold <= 0:
+            raise ValueError('Invalid Anthropic context threshold')
+        group = groups.setdefault(name, {})
+        if kind in group:
+            raise ValueError('Duplicate Anthropic pricing band: ' + label)
         row = record('Anthropic', 'Global', name, 'Standard · 5-minute cache', url)
-        row.update(input=dollars(cells[1]), write=dollars(cells[2]), read=dollars(cells[4]), output=dollars(cells[5]))
-        if 'limited' in cells[0]:
+        row.update(rates)
+        if row['write'] is not None:
+            row['cacheWriteTtlMinutes'] = 5
+        if 'limited' in label.lower():
             row['note'] = 'Limited availability; a listed rate does not grant access.'
-        if 'deprecated' in cells[0].lower():
-            continue
+        group[kind] = (row, threshold)
+    rows = []
+    for name, group in groups.items():
+        if set(group) == {'base'}:
+            row = group['base'][0]
+        elif set(group) == {'up to', 'over'}:
+            row, threshold = group['up to']
+            long, long_threshold = group['over']
+            if threshold != long_threshold:
+                raise ValueError('Mismatched Anthropic context thresholds: ' + name)
+            row['longContext'] = {'threshold': threshold, **{kind: long[kind] for kind in fields}}
+        else:
+            raise ValueError('Incomplete or ambiguous Anthropic context bands: ' + name)
         rows.append(row)
     return finish(rows)
 
