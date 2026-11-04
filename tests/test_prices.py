@@ -9,6 +9,9 @@ p = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(p)
 
 class PriceTests(unittest.TestCase):
+    def pricing_fixture(self, provider):
+        return (Path(__file__).parent / 'fixtures' / (provider + '-pricing.md')).read_text()
+
     def model_card_fixture(self):
         return '''## Pricing
 All prices are USD per million tokens, Standard tier.
@@ -146,10 +149,97 @@ Short context: ≤272K input tokens.'''
         self.assertEqual(row['longContext']['output'], 15)
 
     def test_anthropic_uses_5min_cache_column(self):
-        md = '## Model pricing\n| Claude Test | $3 / MTok | $3.75 / MTok | $6 / MTok | $0.30 / MTok | $15 / MTok |\n## Other pricing\n'
+        md = '## Model pricing\n| Model | Base input tokens | 5m cache writes | 1h cache writes | Cache hits and refreshes | Output tokens |\n| Claude Test | $3 / MTok | $3.75 / MTok | $6 / MTok | $0.30 / MTok | $15 / MTok |\n## Other pricing\n'
         row = p.parse_anthropic(md, 'https://example.com')[0]
         self.assertEqual(row['write'], 3.75)
         self.assertEqual(row['read'], .3)
+        self.assertEqual(row['cacheWriteTtlMinutes'], 5)
+
+    def test_current_openai_headers_preserve_rates_and_cache_ttl(self):
+        rows = p.parse_openai(self.pricing_fixture('openai'), 'https://example.com')
+        self.assertEqual(len(rows), 27)
+        row = next(r for r in rows if r['name'] == 'gpt-6.1-sol')
+        self.assertEqual([row[k] for k in ['input', 'output', 'read', 'write']], [2, 10, .1, 2.5])
+        self.assertEqual(row['longContext'], {'threshold': 272000, 'input': 4, 'output': 15, 'read': .2, 'write': 5})
+        self.assertEqual(row['cacheWriteTtlMinutes'], 30)
+        flat = next(r for r in rows if r['name'] == 'gpt-5.4-mini')
+        self.assertEqual([flat[k] for k in ['input', 'output', 'read', 'write']], [.75, 4.5, .075, None])
+        self.assertNotIn('longContext', flat)
+        self.assertNotIn('fast-only', [r['name'] for r in rows])
+        self.assertNotIn('restricted-only', [r['name'] for r in rows])
+
+    def test_openai_column_reordering_does_not_change_rates(self):
+        md = self.pricing_fixture('openai')
+        reordered = []
+        for line in md.splitlines():
+            if line.startswith('|'):
+                cells = line.strip('|').split('|')
+                cells[1], cells[2] = cells[2], cells[1]
+                line = '|' + '|'.join(cells) + '|'
+            reordered.append(line)
+        self.assertEqual(p.parse_openai('\n'.join(reordered), 'url'), p.parse_openai(md, 'url'))
+
+    def test_openai_rejects_unknown_headers_or_threshold(self):
+        md = self.pricing_fixture('openai')
+        for changed in [md.replace('30m write', '6h write'), md.replace('≤272K input tokens', '≤400K input tokens'), md.replace('Long context output', 'Unknown output')]:
+            with self.subTest(changed=changed[:50]), self.assertRaises(ValueError):
+                p.parse_openai(changed, 'url')
+
+    def test_direct_feeds_reject_missing_base_or_invalid_long_context_rates(self):
+        for provider, parser, marker in [('openai', p.parse_openai, '| gpt-6.1-sol | $2.00 |'), ('anthropic', p.parse_anthropic, '| Claude Sonnet 5.5 | $2 / MTok |')]:
+            md = self.pricing_fixture(provider)
+            self.assertIn(marker, md)
+            with self.subTest(provider=provider), self.assertRaises(ValueError):
+                parser(md.replace(marker, marker.rsplit('$', 1)[0] + '- |'), 'url')
+        md = self.pricing_fixture('anthropic')
+        long = next(line for line in md.splitlines() if 'for prompts over' in line)
+        for price in ['$2.50', '$0.05', '$0.625']:
+            with self.subTest(price=price), self.assertRaises(ValueError):
+                p.parse_anthropic(md.replace(long, long.replace(price, '$2000000')), 'url')
+
+    def test_openai_does_not_guess_missing_long_context_prices(self):
+        md = '''### Standard pricing data
+| Model | Short context input | Short context cached input | Short context cache writes | Short context output | Long context input | Long context cached input | Long context cache writes | Long context output |
+| model-test | $2 | $0.2 | $2.5 | $10 | - | - | - | - |
+Short context: ≤272K input tokens.'''
+        self.assertEqual(p.parse_openai(md, 'url')[0]['unpricedAbove'], 272000)
+        with self.assertRaisesRegex(ValueError, 'Incomplete OpenAI long-context'):
+            p.parse_openai(md.replace('| - | - | - | - |', '| $4 | - | - | - |'), 'url')
+
+    def test_anthropic_context_bands_are_one_offering_with_explicit_rates(self):
+        rows = p.parse_anthropic(self.pricing_fixture('anthropic'), 'https://example.com')
+        self.assertEqual(len(rows), 16)
+        row = next(r for r in rows if r['name'] == 'Claude Haiku 5.5')
+        self.assertEqual([row[k] for k in ['input', 'output', 'read', 'write']], [.1, .5, .01, .125])
+        self.assertEqual(row['longContext'], {'threshold': 100000, 'input': .5, 'output': 2.5, 'read': .05, 'write': .625})
+        self.assertEqual(row['id'], p.record('Anthropic', 'Global', 'Claude Haiku 5.5', 'Standard · 5-minute cache', 'url')['id'])
+        self.assertTrue(all('retired' not in r['name'].lower() for r in rows))
+        self.assertNotIn('Claude Opus 4.1', [r['name'] for r in rows])
+        self.assertNotIn('batch-only', [r['name'] for r in rows])
+        self.assertIn('Limited availability', next(r['note'] for r in rows if r['name'] == 'Claude Mythos 5.1'))
+
+    def test_anthropic_context_band_order_does_not_matter(self):
+        md = self.pricing_fixture('anthropic')
+        lines = md.splitlines()
+        indices = [i for i, line in enumerate(lines) if line.startswith('| Claude Haiku 5.5')]
+        lines[indices[0]], lines[indices[1]] = lines[indices[1]], lines[indices[0]]
+        self.assertEqual(p.parse_anthropic('\n'.join(lines), 'url'), p.parse_anthropic(md, 'url'))
+
+    def test_anthropic_rejects_ambiguous_or_incomplete_context_bands(self):
+        md = self.pricing_fixture('anthropic')
+        short = next(line for line in md.splitlines(keepends=True) if 'for prompts up to' in line)
+        long = next(line for line in md.splitlines(keepends=True) if 'for prompts over' in line)
+        for changed in [md.replace(short, ''), md.replace(long, ''), md.replace('over 100,000', 'over 200,000'), md.replace(short, short + short), md.replace('(for prompts up to 100,000 tokens)', '(short context)'), md.replace(short, short + short.replace(' (for prompts up to 100,000 tokens)', ''))]:
+            with self.subTest(changed=changed[:50]), self.assertRaises(ValueError):
+                p.parse_anthropic(changed, 'url')
+
+    def test_direct_feed_rejects_malformed_or_duplicate_columns(self):
+        for provider, parser in [('openai', p.parse_openai), ('anthropic', p.parse_anthropic)]:
+            md = self.pricing_fixture(provider)
+            header = next(line for line in md.splitlines() if line.startswith('| Model'))
+            for changed in [md.replace(header, header.replace('Model', 'Unknown'), 1), md.replace(header, header + ' Extra |', 1), md.replace(header, header + ' Model |', 1)]:
+                with self.subTest(provider=provider), self.assertRaises(ValueError):
+                    parser(changed, 'url')
 
     def test_names_with_plus_have_distinct_identity(self):
         args = ['AWS Bedrock', 'us-east-1', 'Command R', 'Regional', 'https://example.com']
